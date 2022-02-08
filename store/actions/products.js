@@ -1,5 +1,7 @@
 import Product from "../../models/Product";
 
+import { baseURL } from "../../keysConstants";
+
 export const DELETE_PRODUCT = "DELETE_PRODUCT";
 export const CREATE_PRODUCT = "CREATE_PRODUCT";
 export const UPDATE_PRODUCT = "UPDATE_PRODUCT";
@@ -10,9 +12,7 @@ export const fetchProducts = () => {
     console.log(getState());
     const userId = getState().Auth.userId;
     try {
-      const response = await fetch(
-        "https://shopping-app-62e38-default-rtdb.firebaseio.com/products.json"
-      );
+      const response = await fetch(`${baseURL}/products.json`);
 
       if (!response.ok) {
         throw new Error("Something went wrong!");
@@ -48,7 +48,7 @@ export const deleteProduct = (productId) => {
   return async (dispatch, getState) => {
     const token = getState().Auth.token;
     const response = await fetch(
-      `https://shopping-app-62e38-default-rtdb.firebaseio.com/products/${productId}.json?auth=${token}`,
+      `${baseURL}/products/${productId}.json?auth=${token}`,
       {
         method: "DELETE",
       }
@@ -67,22 +67,19 @@ export const createProduct = (title, description, imageUrl, price) => {
     const token = getState().Auth.token;
     const userId = getState().Auth.userId;
     console.log(getState());
-    const response = await fetch(
-      `https://shopping-app-62e38-default-rtdb.firebaseio.com/products.json?auth=${token}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          title,
-          description,
-          imageUrl,
-          price,
-          ownerId: userId,
-        }),
-      }
-    );
+    const response = await fetch(`${baseURL}/products.json?auth=${token}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title,
+        description,
+        imageUrl,
+        price,
+        ownerId: userId,
+      }),
+    });
     const resData = await response.json();
     console.log(userId);
 
@@ -104,7 +101,7 @@ export const updateProduct = (id, title, description, imageUrl) => {
   return async (dispatch, getState) => {
     const token = getState().Auth.token;
     const response = await fetch(
-      `https://shopping-app-62e38-default-rtdb.firebaseio.com/products/${id}.json?auth=${token}`,
+      `${baseURL}/products/${id}.json?auth=${token}`,
       {
         method: "PATCH",
         headers: {

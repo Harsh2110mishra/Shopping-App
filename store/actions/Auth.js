@@ -1,4 +1,5 @@
 import { AsyncStorage } from "react-native";
+import { authUrl, authKey } from "../../keysConstants";
 
 let timer;
 
@@ -14,20 +15,17 @@ export const Authenticate = (userId, token, expiryTime) => {
 
 export const signup = (email, password) => {
   return async (dispatch) => {
-    const response = await fetch(
-      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAnaJyjjGppk9-FiWocva_cP0vaMrKp4_4",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: email,
-          password: password,
-          returnSecureToken: true,
-        }),
-      }
-    );
+    const response = await fetch(`${authUrl}/accounts:signUp?key=${authKey}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+        returnSecureToken: true,
+      }),
+    });
     if (!response.ok) {
       const responseData = await response.json();
       const errorMessage = responseData.error.message;
@@ -54,7 +52,7 @@ export const signup = (email, password) => {
 export const login = (email, password) => {
   return async (dispatch) => {
     const response = await fetch(
-      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAnaJyjjGppk9-FiWocva_cP0vaMrKp4_4",
+      `${authUrl}/accounts:signInWithPassword?key=${authKey}`,
       {
         method: "POST",
         headers: {

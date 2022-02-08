@@ -3,13 +3,13 @@ export const GET_ORDER = "GET_ORDER";
 
 import Order from "../../models/orders";
 
+import { baseURL } from "../../keysConstants";
+
 export const getOrders = () => {
   return async (dispatch, getState) => {
     const userId = getState().Auth.userId;
     try {
-      const response = await fetch(
-        `https://shopping-app-62e38-default-rtdb.firebaseio.com/orders/${userId}.json`
-      );
+      const response = await fetch(`${baseURL}/orders/${userId}.json`);
 
       if (!response.ok) {
         throw new Error("Something went wrong!");
@@ -41,7 +41,7 @@ export const addOrder = (cartItems, totalAmount) => {
     const token = getState().Auth.token;
     const userId = getState().Auth.userId;
     const response = await fetch(
-      `https://shopping-app-62e38-default-rtdb.firebaseio.com/orders/${userId}.json?auth=${token}`,
+      `${baseURL}/orders/${userId}.json?auth=${token}`,
       {
         method: "POST",
         headers: {

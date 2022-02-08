@@ -1,16 +1,13 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { createStore, combineReducers, applyMiddleware } from "redux";
-import { Provider } from "react-redux";
 import { useFonts } from "expo-font";
+import React from "react";
+import { Provider } from "react-redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import ReduxThunk from "redux-thunk";
-
 import NavigationContainer from "./navigation/NavigationContainer";
-
-import productReducer from "./store/reducers/products";
+import authReducer from "./store/reducers/Auth";
 import cartReducer from "./store/reducers/cart";
 import orderReducer from "./store/reducers/orders";
-import authReducer from "./store/reducers/Auth";
+import productReducer from "./store/reducers/products";
 
 const rootReducer = combineReducers({
   products: productReducer,

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
 import { createStore, combineReducers, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
 import { useFonts } from "expo-font";

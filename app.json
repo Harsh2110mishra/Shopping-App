@@ -23,10 +23,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/Shopping-App-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.harsh_mishra.ShoppingApp"
     },
     "web": {
       "favicon": "./assets/Shopping-App-icon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "aec3c27c-214c-44e6-acf1-67aa2046ffce"
+      }
     }
   }
 }

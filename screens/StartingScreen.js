@@ -1,14 +1,8 @@
 import React, { useEffect } from "react";
-import {
-  View,
-  StyleSheet,
-  Text,
-  ActivityIndicator,
-  AsyncStorage,
-} from "react-native";
+import { View, StyleSheet, Text, ActivityIndicator } from "react-native";
 
 import { useDispatch } from "react-redux";
-
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as authActions from "../store/actions/Auth";
 import Colors from "../constants/Colors";
 

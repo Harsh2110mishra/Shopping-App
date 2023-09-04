@@ -11,17 +11,19 @@
       "backgroundColor": "#ffffff"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/aec3c27c-214c-44e6-acf1-67aa2046ffce"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/Shopping-App-icon.png",
-        "backgroundColor": "#FFFFFF",
-        "buildType": "apk"
+        "backgroundColor": "#FFFFFF"
       },
       "package": "com.harsh_mishra.ShoppingApp"
     },
@@ -32,6 +34,9 @@
       "eas": {
         "projectId": "aec3c27c-214c-44e6-acf1-67aa2046ffce"
       }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }
